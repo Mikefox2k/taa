@@ -1,0 +1,255 @@
+minecraft:
+  story:
+    root:
+      points: 1
+    mine_stone:
+      points: 1
+    upgrade_tools:
+      points: 1
+    smelt_iron:
+      points: 1
+    obtain_armor:
+      points: 2
+    lava_bucket:
+      points: 2
+    iron_tools:
+      points: 2
+    deflect_arrow:
+      points: 4
+    form_obsidian:
+      points: 4
+    mine_diamond:
+      points: 4
+    enter_the_nether:
+      points: 6
+    shiny_gear:
+      points: 6
+    enchant_item:
+      points: 6
+    cure_zombie_villager:
+      points: 25
+    follow_ender_eye:
+      points: 10
+    enter_the_end:
+      points: 25
+
+  nether:
+    root:
+      points: 1
+    return_to_sender:
+      points: 10
+    find_bastion:
+      points: 5
+    obtain_ancient_debris:
+      points: 5
+    fast_travel:
+      points: 20
+    find_fortress:
+      points: 5
+    obtain_crying_obsidian:
+      points: 5
+    distract_piglin:
+      points: 5
+    ride_strider:
+      points: 5
+    uneasy_alliance:
+      points: 20
+    loot_bastion:
+      points: 5
+    use_lodestone:
+      points: 5
+    netherite_armor:
+      points: 20
+    get_wither_skull:
+      points: 10
+    obtain_blaze_rod:
+      points: 10
+    charge_respawn_anchor:
+      points: 15
+    ride_strider_in_overworld_lava:
+      points: 15
+    explore_nether:
+      points: 20
+    summon_wither:
+      points: 20
+    brew_potion:
+      points: 10
+    create_beacon:
+      points: 15
+    all_potions:
+      points: 50
+    create_full_beacon:
+      points: 25
+    all_effects:
+      points: 50
+
+  end:
+    root:
+      points: 1
+    kill_dragon:
+      points: 150
+    dragon_egg:
+      points: 20
+    enter_end_gateway:
+      points: 5
+    respawn_dragon:
+      points: 20
+    dragon_breath:
+      points: 20
+    find_end_city:
+      points: 25
+    elytra:
+      points: 25
+    levitate:
+      points: 25
+
+  adventure:
+    root:
+      points: 1
+    voluntary_exile:
+      points: 2
+    spyglass_at_parrot:
+      points: 2
+    kill_a_mob:
+      points: 1
+    read_power_from_chiseled_bookshelf:
+      points: 2
+    trade:
+      points: 1
+    trim_with_any_armor_pattern:
+      points: 2
+    honey_block_slide:
+      points: 2
+    ol_betsy:
+      points: 2
+    lightning_rod_with_villager_no_fire:
+      points: 5
+    fall_from_world_height:
+      points: 25
+    salvage_sherd:
+      points: 2
+    avoid_vibration:
+      points: 5
+    sleep_in_bed:
+      points: 1
+    hero_of_the_village:
+      points: 25
+    spyglass_at_ghast:
+      points: 5
+    throw_trident:
+      points: 5
+    kill_mob_near_sculk_catalyst:
+      points: 20
+    shoot_arrow:
+      points: 2
+    kill_all_mobs:
+      points: 75
+    totem_of_undying:
+      points: 10
+    summon_iron_golem:
+      points: 5
+    trade_at_world_height:
+      points: 10
+    trim_with_all_exclusive_armor_patterns:
+      points: 25
+    two_birds_one_arrow:
+      points: 20
+    whos_the_pillager_now:
+      points: 5
+    arbalistic:
+      points: 50
+    craft_decorated_pot_using_only_sherds:
+      points: 5
+    adventuring_time:
+      points: 75
+    play_jukebox_in_meadows:
+      points: 10
+    walk_on_powder_snow_with_leather_boots:
+      points: 5
+    spyglass_at_dragon:
+      points: 5
+    very_very_frightening:
+      points: 10
+    sniper_duel:
+      points: 15
+    bullseye:
+      points: 20
+    brush_armadillo:
+      points: 10
+    minecraft_trials_edition:
+      points: 10
+    crafters_crafting_crafters:
+      points: 10
+    lighten_up:
+      points: 10
+    who_needs_rockets:
+      points: 10
+    under_lock_and_key:
+      points: 10
+    revaulting:
+      points: 20
+    blowback:
+      points: 20
+    overoverkill:
+      points: 20
+
+
+  husbandry:
+    root:
+      points: 1
+    safely_harvest_honey:
+      points: 2
+    breed_an_animal:
+      points: 1
+    allay_deliver_item_to_player:
+      points: 5
+    ride_a_boat_with_a_goat:
+      points: 5
+    tame_an_animal:
+      points: 1
+    make_a_sign_glow:
+      points: 2
+    fishy_business:
+      points: 1
+    silk_touch_nest:
+      points: 5
+    tadpole_in_a_bucket:
+      points: 10
+    obtain_sniffer_egg:
+      points: 10
+    plant_seed:
+      points: 1
+    wax_on:
+      points: 10
+    breed_all_animals:
+      points: 75
+    allay_deliver_cake_to_noteblock:
+      points: 10
+    complete_catalogue:
+      points: 50
+    tactical_fishing:
+      points: 1
+    leash_all_frog_variants:
+      points: 10
+    feed_snifflet:
+      points: 10
+    balanced_diet:
+      points: 75
+    obtain_netherite_hoe:
+      points: 15
+    wax_off:
+      points: 5
+    axolotl_in_a_bucket:
+      points: 10
+    froglights:
+      points: 25
+    plant_any_sniffer_seed:
+      points: 10
+    kill_axolotl_target:
+      points: 10
+    repair_wolf_armor:
+      points: 10
+    whole_pack:
+      points: 50
+    remove_wolf_armor:
+      points: 10
