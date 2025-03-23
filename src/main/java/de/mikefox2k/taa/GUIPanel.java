@@ -42,7 +42,7 @@ public class GUIPanel implements Listener {
         board.updateLines(
                 Component.text("Gesamtzeit", TAAColors.LIGHT_GRAY),
                 Component.text().content(" » ").color(TAAColors.LIGHT_GRAY)
-                        .append(Component.text(String.format("%02d:%02d", timePlayed / 60, timePlayed % 60), TAAColors.LIGHT_GRAY))
+                        .append(Component.text(Util.formatTime(timePlayed), TAAColors.LIGHT_GRAY))
                         .build(),
                 Component.text(""),
                 Component.text("Achievements", TAAColors.LIGHT_GRAY),
