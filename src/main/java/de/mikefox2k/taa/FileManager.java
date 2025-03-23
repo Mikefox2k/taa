@@ -31,7 +31,10 @@ public class FileManager {
             GameState state = new GameState(
                     plugin.getGameManager().getPlayers(),
                     plugin.getGameManager().isGameRunning(),
-                    plugin.getGameManager().getTimePlayed(uuid)
+                    plugin.getGameManager().getTimePlayed(uuid),
+                    plugin.getGameManager().getTimeSinceLastAchievement(uuid),
+                    plugin.getGameManager().getCurrentAchievementAmount(),
+                    plugin.getGameManager().getCurrentGoal().getOrDefault(uuid, "-")
             );
 
             FileWriter writer = new FileWriter(saveFile);
@@ -55,6 +58,8 @@ public class FileManager {
             plugin.getGameManager().setGameRunning(state.isGameRunning());
             plugin.getGameManager().setPlayers(state.getRegisteredPlayers());
             plugin.getGameManager().setTimePlayed(uuid, state.getTimePlayed());
+            plugin.getGameManager().setTimeSinceLastAchievement(uuid, state.getTimeSinceAchievement());
+            plugin.getGameManager().updateCurrentGoal(state.getCurrentGoal());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -65,11 +70,17 @@ public class FileManager {
         private final Map<UUID, PlayerData> registeredPlayers;
         private final boolean isGameRunning;
         private final Long timePlayed;
+        private final Long timeSinceAchievement;
+        private final int achievementAmount;
+        private final String currentGoal;
 
-        public GameState(Map<UUID, PlayerData> registeredPlayers, boolean isGameRunning, Long timePlayed) {
+        public GameState(Map<UUID, PlayerData> registeredPlayers, boolean isGameRunning, Long timePlayed, Long timeSinceAchievement, int achievementAmount, String currentGoal) {
             this.registeredPlayers = registeredPlayers;
             this.isGameRunning = isGameRunning;
             this.timePlayed = timePlayed;
+            this.timeSinceAchievement = timeSinceAchievement;
+            this.achievementAmount = achievementAmount;
+            this.currentGoal = currentGoal;
         }
 
         public Map<UUID, PlayerData> getRegisteredPlayers() {
@@ -82,6 +93,18 @@ public class FileManager {
 
         public Long getTimePlayed() {
             return timePlayed;
+        }
+
+        public Long getTimeSinceAchievement() {
+            return timeSinceAchievement;
+        }
+
+        public int getAchievementAmount() {
+            return achievementAmount;
+        }
+
+        public String getCurrentGoal() {
+            return currentGoal;
         }
 
     }

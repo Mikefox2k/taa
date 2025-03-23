@@ -38,6 +38,8 @@ public class GUIPanel implements Listener {
         int currentAchievementAmount = this.plugin.getGameManager().getCurrentAchievementAmount();
         int maxAchievementAmount = plugin.getGameManager().getMaxAchievementAmount();
         long timePlayed = this.plugin.getGameManager().getTimePlayed(board.getPlayer().getUniqueId());
+        long timeSinceLastAchievement = this.plugin.getGameManager().getTimeSinceLastAchievement(board.getPlayer().getUniqueId());
+        String currentGoal = this.plugin.getGameManager().getCurrentGoal().getOrDefault(board.getPlayer().getUniqueId(), "-");
 
         board.updateLines(
                 Component.text("»Achievement Hunt«")
@@ -53,6 +55,16 @@ public class GUIPanel implements Listener {
                         .append(Component.text(currentAchievementAmount, TAAColors.ORANGE))
                         .append(Component.text(" / ", TAAColors.ORANGE))
                         .append(Component.text(maxAchievementAmount, TAAColors.ORANGE))
+                        .build(),
+                Component.text(""),
+                Component.text("Letztes Achievement", TAAColors.YELLOW),
+                Component.text().content(" » ").color(TAAColors.ORANGE)
+                        .append(Component.text(Util.formatTime(timeSinceLastAchievement), TAAColors.ORANGE))
+                        .build(),
+                Component.text(""),
+                Component.text("Ziel", TAAColors.YELLOW),
+                Component.text().content(" » ").color(TAAColors.ORANGE)
+                        .append(Component.text(currentGoal, TAAColors.GREEN))
                         .build()
         );
     }
@@ -75,7 +87,8 @@ public class GUIPanel implements Listener {
             FileManager fileManager = new FileManager(plugin);
             fileManager.loadGameState(player.getUniqueId());
 
-            plugin.getGameManager().startTimer();
+            plugin.getGameManager().startTimerPlayed();
+            plugin.getGameManager().startTimerSinceLastAchievement();
         }
     }
 
@@ -86,7 +99,8 @@ public class GUIPanel implements Listener {
         FileManager fileManager = new FileManager(plugin);
         fileManager.saveGameState(player.getUniqueId());
 
-        plugin.getGameManager().stopTimer();
+        plugin.getGameManager().stopTimerPlayed();
+        plugin.getGameManager().stopTimerSinceLastAchievement();
 
         FastBoard board = this.boards.remove(player.getUniqueId());
 

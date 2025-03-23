@@ -18,9 +18,15 @@ public class GameManager implements Listener {
 
     private final TAAPlugin plugin;
     private Map<UUID, PlayerData> players;
-    private Map<UUID, Long> lastAchievementTime = new HashMap<>();
+
     private Map<UUID, Long> timePlayed = new HashMap<>();
-    private BukkitTask timeTracker;
+    private BukkitTask timeTrackerPlayed;
+
+    private Map<UUID, Long> timeSinceLastAchievement = new HashMap<>();
+    private BukkitTask timeTrackerSinceLastAchievement;
+
+    private Map<UUID, String> currentGoal = new HashMap<>();
+
     private boolean isGameRunning;
 
     public GameManager(TAAPlugin plugin) {
@@ -94,7 +100,8 @@ public class GameManager implements Listener {
                             player.setHealth(20D);
                             player.setFoodLevel(20);
 
-                            startTimer();
+                            startTimerPlayed();
+                            startTimerSinceLastAchievement();
                         }
                     }
 
@@ -104,6 +111,20 @@ public class GameManager implements Listener {
         }.runTaskTimer(plugin, 0L, 20L);
 
         return true;
+    }
+
+    public Map<UUID, String> getCurrentGoal() {
+        return this.currentGoal;
+    }
+
+    public void updateCurrentGoal(String goal) {
+        for (PlayerData playerData : players.values()) {
+            Player player = plugin.getServer().getPlayer(playerData.getUuid());
+            if (player != null) {
+                this.currentGoal.clear();
+                this.currentGoal.put(playerData.getUuid(), goal);
+            }
+        }
     }
 
     @EventHandler
@@ -125,6 +146,7 @@ public class GameManager implements Listener {
         }
 
         playerData.getEarnedAchievements().add(achievementKey);
+        resetTimeSinceLastAchievement();
         plugin.getGUIPanel().updateBoards();
     }
 
@@ -153,12 +175,11 @@ public class GameManager implements Listener {
         return key.split("/")[0].equals("recipes");
     }
 
-    public void startTimer() {
-        timeTracker = new BukkitRunnable() {
+    public void startTimerPlayed() {
+        timeTrackerPlayed = new BukkitRunnable() {
             @Override
             public void run() {
                    for ( PlayerData playerData : players.values()) {
-                       Player player = plugin.getServer().getPlayer(playerData.getUuid());
                        long lastPlayTime = timePlayed.getOrDefault(playerData.getUuid(), 0L);
                        timePlayed.put(playerData.getUuid(), lastPlayTime + 1);
 
@@ -168,8 +189,27 @@ public class GameManager implements Listener {
         }.runTaskTimer(plugin, 0L, 20L);
     }
 
+    public void startTimerSinceLastAchievement() {
+
+        // No need to update GUI, since we update every second by the playtime tracker
+
+        timeTrackerSinceLastAchievement = new BukkitRunnable() {
+            @Override
+            public void run() {
+                for ( PlayerData playerData : players.values()) {
+                    long lastPlayTime = timeSinceLastAchievement.getOrDefault(playerData.getUuid(), 0L);
+                    timeSinceLastAchievement.put(playerData.getUuid(), lastPlayTime + 1);
+                }
+            }
+        }.runTaskTimer(plugin, 0L, 20L);
+    }
+
     public long getTimePlayed(UUID uuid) {
         return this.timePlayed.getOrDefault(uuid, 0L);
+    }
+
+    public long getTimeSinceLastAchievement(UUID uuid) {
+        return this.timeSinceLastAchievement.getOrDefault(uuid, 0L);
     }
 
     public void setTimePlayed(UUID uuid, long time) {
@@ -177,14 +217,35 @@ public class GameManager implements Listener {
         this.timePlayed.put(uuid, time);
     }
 
-    public void stopTimer() {
-        if (this.timeTracker != null) {
-            this.timeTracker.cancel();
+    public void setTimeSinceLastAchievement(UUID uuid, long time) {
+        this.timeSinceLastAchievement.clear();
+        this.timeSinceLastAchievement.put(uuid, time);
+    }
+
+    public void resetTimeSinceLastAchievement() {
+        for (PlayerData playerData : players.values()) {
+            this.timeSinceLastAchievement.put(playerData.getUuid(), 0L);
         }
     }
 
-    public BukkitTask getTimeTracker() {
-        return this.timeTracker;
+    public void stopTimerPlayed() {
+        if (this.timeTrackerPlayed != null) {
+            this.timeTrackerPlayed.cancel();
+        }
+    }
+
+    public void stopTimerSinceLastAchievement() {
+        if (this.timeTrackerSinceLastAchievement != null) {
+            this.timeTrackerSinceLastAchievement.cancel();
+        }
+    }
+
+    public BukkitTask getTimeTrackerPlayed() {
+        return this.timeTrackerPlayed;
+    }
+
+    public BukkitTask getTimeTrackerSinceLastAchievement() {
+        return this.timeTrackerSinceLastAchievement;
     }
 
     public Set<UUID> getRegisteredUUIDs() {

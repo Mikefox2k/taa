@@ -1,6 +1,7 @@
 package de.mikefox2k.taa;
 
 import com.mojang.brigadier.Command;
+import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.tree.LiteralCommandNode;
 import io.papermc.paper.command.brigadier.CommandSourceStack;
 import io.papermc.paper.command.brigadier.Commands;
@@ -45,6 +46,18 @@ public class TAAPlugin extends JavaPlugin implements Listener {
 
                     return Command.SINGLE_SUCCESS;
                 }))
+            .then(Commands.literal("add")
+                    .then(Commands.argument("string", StringArgumentType.greedyString())
+                            .executes(ctx -> {
+                                CommandSender sender = ctx.getSource().getSender();
+                                String string = StringArgumentType.getString(ctx, "string");
+
+                                gameManager.updateCurrentGoal(string);
+
+                                return Command.SINGLE_SUCCESS;
+                            })
+                    )
+            )
             .build();
 
     @Override
