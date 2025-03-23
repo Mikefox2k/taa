@@ -40,6 +40,9 @@ public class GUIPanel implements Listener {
         long timePlayed = this.plugin.getGameManager().getTimePlayed(board.getPlayer().getUniqueId());
 
         board.updateLines(
+                Component.text("»Achievement Hunt«")
+                        .style(Style.style(TAAColors.RED, TextDecoration.BOLD, TextDecoration.UNDERLINED)),
+                Component.text(""),
                 Component.text("Gesamtzeit", TAAColors.YELLOW),
                 Component.text().content(" » ").color(TAAColors.ORANGE)
                         .append(Component.text(Util.formatTime(timePlayed), TAAColors.ORANGE))
@@ -57,7 +60,7 @@ public class GUIPanel implements Listener {
     public void createBoard(Player... players) {
         for (Player player : players) {
             FastBoard board = new FastBoard(player);
-            board.updateTitle(Component.text("»TrilluXe«\n Achievement Hunt").style(Style.style(TAAColors.RED, TextDecoration.BOLD)));
+            board.updateTitle(Component.text("»TrilluXe«").style(Style.style(TAAColors.RED, TextDecoration.BOLD)));
             updateBoard(board);
             this.boards.put(player.getUniqueId(), board);
         }
