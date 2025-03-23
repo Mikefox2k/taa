@@ -40,16 +40,16 @@ public class GUIPanel implements Listener {
         long timePlayed = this.plugin.getGameManager().getTimePlayed(board.getPlayer().getUniqueId());
 
         board.updateLines(
-                Component.text("Gesamtzeit", TAAColors.LIGHT_GRAY),
-                Component.text().content(" » ").color(TAAColors.LIGHT_GRAY)
-                        .append(Component.text(Util.formatTime(timePlayed), TAAColors.LIGHT_GRAY))
+                Component.text("Gesamtzeit", TAAColors.YELLOW),
+                Component.text().content(" » ").color(TAAColors.ORANGE)
+                        .append(Component.text(Util.formatTime(timePlayed), TAAColors.ORANGE))
                         .build(),
                 Component.text(""),
-                Component.text("Achievements", TAAColors.LIGHT_GRAY),
-                Component.text().content(" » ").color(TAAColors.LIGHT_GRAY)
-                        .append(Component.text(currentAchievementAmount, TAAColors.YELLOW))
-                        .append(Component.text(" / ", TAAColors.YELLOW))
-                        .append(Component.text(maxAchievementAmount, TAAColors.YELLOW))
+                Component.text("Achievements", TAAColors.YELLOW),
+                Component.text().content(" » ").color(TAAColors.ORANGE)
+                        .append(Component.text(currentAchievementAmount, TAAColors.ORANGE))
+                        .append(Component.text(" / ", TAAColors.ORANGE))
+                        .append(Component.text(maxAchievementAmount, TAAColors.ORANGE))
                         .build()
         );
     }
@@ -57,7 +57,7 @@ public class GUIPanel implements Listener {
     public void createBoard(Player... players) {
         for (Player player : players) {
             FastBoard board = new FastBoard(player);
-            board.updateTitle(Component.text("Trilluxe Achievement Hunt").style(Style.style(TAAColors.RED, TextDecoration.BOLD)));
+            board.updateTitle(Component.text("»TrilluXe«\n Achievement Hunt").style(Style.style(TAAColors.RED, TextDecoration.BOLD)));
             updateBoard(board);
             this.boards.put(player.getUniqueId(), board);
         }
