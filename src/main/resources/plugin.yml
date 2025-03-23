@@ -1,0 +1,6 @@
+name: TAA
+version: 0.1
+main: de.mikefox2k.taa.TAAPlugin
+description: All Achievement Panel für Trilluxe
+author: MikeyRutt
+api-version: '1.21.4'
