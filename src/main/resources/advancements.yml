@@ -67,7 +67,7 @@ minecraft:
 
   nether:
     root:
-      points: 1
+      points: 0
       en: Nether
       de: Nether
     return_to_sender:
@@ -165,7 +165,7 @@ minecraft:
 
   end:
     root:
-      points: 1
+      points: 0
       en: The End
       de: Das Ende
     kill_dragon:
@@ -181,7 +181,7 @@ minecraft:
       en: Remote Gataway
       de: Im Transit
     respawn_dragon:
-      points: 20
+      points: 0
       en: The End...Again...
       de: Das Ende...Schon wieder...
     dragon_breath:
@@ -315,7 +315,7 @@ minecraft:
       en: Careful Restoration
       de: Behutsame Restaurierung
     adventuring_time:
-      points: 75
+      points: 0
       en: Adventuring Time
       de: Abenteuerzeit
     play_jukebox_in_meadows:

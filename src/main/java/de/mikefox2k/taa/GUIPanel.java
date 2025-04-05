@@ -52,31 +52,27 @@ public class GUIPanel implements Listener {
                 Component.text("Gesamtzeit", TAAColors.YELLOW),
                 Component.text(" » ").color(TAAColors.ORANGE)
                         .append(Component.text(Util.formatTime(timePlayed), TAAColors.ORANGE)),
-//                Component.text(""),
                 Component.text("Achievements", TAAColors.YELLOW),
                 Component.text(" » ").color(TAAColors.ORANGE)
                         .append(Component.text(currentAchievementAmount, TAAColors.ORANGE))
                         .append(Component.text(" / ", TAAColors.ORANGE))
                         .append(Component.text(maxAchievementAmount, TAAColors.ORANGE)),
-//                Component.text(""),
                 Component.text("Letztes Achievement", TAAColors.YELLOW),
                 Component.text(" » ").color(TAAColors.ORANGE)
                         .append(Component.text(Util.formatTime(timeSinceLastAchievement), TAAColors.ORANGE)),
                 Component.text(" » ").color(TAAColors.ORANGE)
                         .append(Component.text(lastAchievement, TAAColors.GREEN)),
-//                Component.text(""),
+                Component.text("Punkte", TAAColors.YELLOW),
+                Component.text(" » ").color(TAAColors.ORANGE)
+                        .append(Component.text(currentPoints, TAAColors.ORANGE))
+                        .append(Component.text(" / ", TAAColors.ORANGE))
+                        .append(Component.text(maxPoints, TAAColors.ORANGE)),
                 Component.text("Ziel", TAAColors.YELLOW),
                 Component.text(" » ").color(TAAColors.ORANGE)
                         .append(Component.text(currentGoal, TAAColors.GREEN)),
-//                Component.text(""),
                 Component.text("Tode", TAAColors.YELLOW),
-                Component.text(" » ").color(TAAColors.ORANGE)
-                        .append(Component.text(deathCount, TAAColors.RED)),
-                Component.text("Punkte", TAAColors.YELLOW),
                 Component.text().content(" » ").color(TAAColors.ORANGE)
-                        .append(Component.text(currentPoints, TAAColors.ORANGE))
-                        .append(Component.text(" / ", TAAColors.ORANGE))
-                        .append(Component.text(maxPoints, TAAColors.ORANGE))
+                        .append(Component.text(deathCount, TAAColors.RED))
                         .build()
         );
     }

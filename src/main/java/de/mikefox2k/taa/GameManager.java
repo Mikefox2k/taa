@@ -40,7 +40,7 @@ public class GameManager implements Listener {
         this.plugin = plugin;
         this.players = new HashMap<>();
         this.isGameRunning = false;
-        this.lastAchievement = " - ";
+        this.lastAchievement = "-";
 
         Bukkit.getPluginManager().registerEvents(this, plugin);
     }
@@ -349,8 +349,6 @@ public class GameManager implements Listener {
                 res += getAdvancementPoints(getAdvancementSection(key));
             }
         }
-
-        Bukkit.broadcast(Component.text(res));
         return res;
     }
 
