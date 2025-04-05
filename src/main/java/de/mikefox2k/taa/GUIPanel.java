@@ -38,18 +38,41 @@ public class GUIPanel implements Listener {
         int currentAchievementAmount = this.plugin.getGameManager().getCurrentAchievementAmount();
         int maxAchievementAmount = plugin.getGameManager().getMaxAchievementAmount();
         long timePlayed = this.plugin.getGameManager().getTimePlayed(board.getPlayer().getUniqueId());
+        long timeSinceLastAchievement = this.plugin.getGameManager().getTimeSinceLastAchievement(board.getPlayer().getUniqueId());
+        String lastAchievement = this.plugin.getGameManager().getLastAchievement();
+        String currentGoal = this.plugin.getGameManager().getCurrentGoal().getOrDefault(board.getPlayer().getUniqueId(), "-");
+        int deathCount = this.plugin.getGameManager().getDeathCount();
+        int currentPoints = this.plugin.getGameManager().getCurrentPoints();
+        int maxPoints = this.plugin.getGameManager().getMaxPoints();
 
         board.updateLines(
-                Component.text("Gesamtzeit", TAAColors.LIGHT_GRAY),
-                Component.text().content(" » ").color(TAAColors.LIGHT_GRAY)
-                        .append(Component.text(String.format("%02d:%02d", timePlayed / 60, timePlayed % 60), TAAColors.LIGHT_GRAY))
-                        .build(),
+                Component.text("»Achievement Hunt«")
+                        .style(Style.style(TAAColors.RED, TextDecoration.BOLD, TextDecoration.UNDERLINED)),
                 Component.text(""),
-                Component.text("Achievements", TAAColors.LIGHT_GRAY),
-                Component.text().content(" » ").color(TAAColors.LIGHT_GRAY)
-                        .append(Component.text(currentAchievementAmount, TAAColors.YELLOW))
-                        .append(Component.text(" / ", TAAColors.YELLOW))
-                        .append(Component.text(maxAchievementAmount, TAAColors.YELLOW))
+                Component.text("Gesamtzeit", TAAColors.YELLOW),
+                Component.text(" » ").color(TAAColors.ORANGE)
+                        .append(Component.text(Util.formatTime(timePlayed), TAAColors.ORANGE)),
+                Component.text("Achievements", TAAColors.YELLOW),
+                Component.text(" » ").color(TAAColors.ORANGE)
+                        .append(Component.text(currentAchievementAmount, TAAColors.ORANGE))
+                        .append(Component.text(" / ", TAAColors.ORANGE))
+                        .append(Component.text(maxAchievementAmount, TAAColors.ORANGE)),
+                Component.text("Letztes Achievement", TAAColors.YELLOW),
+                Component.text(" » ").color(TAAColors.ORANGE)
+                        .append(Component.text(Util.formatTime(timeSinceLastAchievement), TAAColors.ORANGE)),
+                Component.text(" » ").color(TAAColors.ORANGE)
+                        .append(Component.text(lastAchievement, TAAColors.GREEN)),
+                Component.text("Punkte", TAAColors.YELLOW),
+                Component.text(" » ").color(TAAColors.ORANGE)
+                        .append(Component.text(currentPoints, TAAColors.ORANGE))
+                        .append(Component.text(" / ", TAAColors.ORANGE))
+                        .append(Component.text(maxPoints, TAAColors.ORANGE)),
+                Component.text("Ziel", TAAColors.YELLOW),
+                Component.text(" » ").color(TAAColors.ORANGE)
+                        .append(Component.text(currentGoal, TAAColors.GREEN)),
+                Component.text("Tode", TAAColors.YELLOW),
+                Component.text().content(" » ").color(TAAColors.ORANGE)
+                        .append(Component.text(deathCount, TAAColors.RED))
                         .build()
         );
     }
@@ -57,7 +80,7 @@ public class GUIPanel implements Listener {
     public void createBoard(Player... players) {
         for (Player player : players) {
             FastBoard board = new FastBoard(player);
-            board.updateTitle(Component.text("Trilluxe Achievement Hunt").style(Style.style(TAAColors.RED, TextDecoration.BOLD)));
+            board.updateTitle(Component.text("»TrilluXe«").style(Style.style(TAAColors.RED, TextDecoration.BOLD)));
             updateBoard(board);
             this.boards.put(player.getUniqueId(), board);
         }
@@ -70,9 +93,10 @@ public class GUIPanel implements Listener {
         if (plugin.getGameManager().getRegisteredUUIDs().contains(player.getUniqueId())) {
             createBoard(player);
             FileManager fileManager = new FileManager(plugin);
-            fileManager.loadGameState(player.getUniqueId());
+            fileManager.loadGameState();
 
-            plugin.getGameManager().startTimer();
+            plugin.getGameManager().startTimerPlayed();
+            plugin.getGameManager().startTimerSinceLastAchievement();
         }
     }
 
@@ -81,9 +105,10 @@ public class GUIPanel implements Listener {
         Player player = event.getPlayer();
 
         FileManager fileManager = new FileManager(plugin);
-        fileManager.saveGameState(player.getUniqueId());
+        fileManager.saveGameState();
 
-        plugin.getGameManager().stopTimer();
+        plugin.getGameManager().stopTimerPlayed();
+        plugin.getGameManager().stopTimerSinceLastAchievement();
 
         FastBoard board = this.boards.remove(player.getUniqueId());
 

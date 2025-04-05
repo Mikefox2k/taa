@@ -1,0 +1,499 @@
+minecraft:
+  story:
+    root:
+      points: 1
+      en: Minecraft
+      de: Minecraft
+    mine_stone:
+      points: 1
+      en: Stone Age
+      de: Steinzeit
+    upgrade_tools:
+      points: 1
+      en: Getting an Upgrade
+      de: Technischer Fortschritt
+    smelt_iron:
+      points: 1
+      en: Acquire Hardware
+      de: Metallurgie
+    obtain_armor:
+      points: 2
+      en: Suit Up
+      de: Mach dich Fein
+    lava_bucket:
+      points: 2
+      en: Hot Stuff
+      de: Manche mögens heiß
+    iron_tools:
+      points: 2
+      en: Isnt It Iron Pick
+      de: Zu viel Eisen im Blut
+    deflect_arrow:
+      points: 4
+      en: Not Today, Thank You
+      de: Heute nicht, danke
+    form_obsidian:
+      points: 4
+      en: Ice Bucket Challenge
+      de: Ice Bucket Challenge
+    mine_diamond:
+      points: 4
+      en: Diamonds!
+      de: Diamanten!
+    enter_the_nether:
+      points: 6
+      en: We Need to Go Deeper
+      de: Wir müssen noch tiefer
+    shiny_gear:
+      points: 6
+      en: Cover me with Diamonds
+      de: Bedeck mich mit Diamanten
+    enchant_item:
+      points: 6
+      en: Enchanter
+      de: Verzauberer
+    cure_zombie_villager:
+      points: 25
+      en: Zombie Doctor
+      de: Zombiearzt
+    follow_ender_eye:
+      points: 10
+      en: Eye Spy
+      de: Das fliegende Auge
+    enter_the_end:
+      points: 25
+      en: The End?
+      de: Das Ende?
+
+  nether:
+    root:
+      points: 0
+      en: Nether
+      de: Nether
+    return_to_sender:
+      points: 10
+      en: Return to Sender
+      de: Zurück zum Absender
+    find_bastion:
+      points: 5
+      en: Those Were the Days
+      de: Das waren noch Zeiten...
+    obtain_ancient_debris:
+      points: 5
+      en: Hidden in the Depths
+      de: Verborgen in den Tiefen
+    fast_travel:
+      points: 20
+      en: Subspace Bubble
+      de: Subraumtransport
+    find_fortress:
+      points: 5
+      en: A Terrible Fortress
+      de: Eine schreckliche Festung
+    obtain_crying_obsidian:
+      points: 5
+      en: Who is Cutting Onions?
+      de: Wer schneidet hier Zwiebeln?
+    distract_piglin:
+      points: 5
+      en: Oh Shiny
+      de: Oh, wie glänzend!
+    ride_strider:
+      points: 5
+      en: This Boat Has Legs
+      de: Mach diesem Boot Beine
+    uneasy_alliance:
+      points: 20
+      en: Uneasy Alliance
+      de: Unheilvolle Allianz
+    loot_bastion:
+      points: 5
+      en: War Pigs
+      de: Kampfschweine
+    use_lodestone:
+      points: 5
+      en: Country Lode, Take Me Home
+      de: Weißt du, wo die Leitstein stehen
+    netherite_armor:
+      points: 20
+      en: Cover Me in Debris
+      de: Bedeck mich mit Schrott
+    get_wither_skull:
+      points: 10
+      en: Spooky Scary Skeleton
+      de: Nicht den Kopf verlieren
+    obtain_blaze_rod:
+      points: 10
+      en: Into Fire
+      de: Spiel mit dem Feuer
+    charge_respawn_anchor:
+      points: 15
+      en: Not Quite Nine Lives
+      de: Nicht ganz sieben Leben
+    ride_strider_in_overworld_lava:
+      points: 15
+      en: Feels Like Home
+      de: Ganz wie zu Hause
+    explore_nether:
+      points: 20
+      en: Hot Tourist Destinations
+      de: Heißbegehrte reiseziele
+    summon_wither:
+      points: 20
+      en: Withering Heights
+      de: Umwitherte Höhen
+    brew_potion:
+      points: 10
+      en: Local Brewery
+      de: Alchemie
+    create_beacon:
+      points: 15
+      en: Bring Home the Beacon
+      de: Den Nachbarn heimleuchten
+    all_potions:
+      points: 50
+      en: A Furious Cocktail
+      de: Eine gefährliche Mischung
+    create_full_beacon:
+      points: 25
+      en: Beaconator
+      de: Leuchtturmwärter
+    all_effects:
+      points: 50
+      en: How Did We Get Here?
+      de: Wie haben wir das geschafft?
+
+  end:
+    root:
+      points: 0
+      en: The End
+      de: Das Ende
+    kill_dragon:
+      points: 150
+      en: Free the End
+      de: Befreie das Ende
+    dragon_egg:
+      points: 20
+      en: The Next Generation
+      de: Die nächste Generation
+    enter_end_gateway:
+      points: 5
+      en: Remote Gataway
+      de: Im Transit
+    respawn_dragon:
+      points: 0
+      en: The End...Again...
+      de: Das Ende...Schon wieder...
+    dragon_breath:
+      points: 20
+      en: You Need a Mint
+      de: Du brauchst ein Pfefferminz
+    find_end_city:
+      points: 25
+      en: The City at the End of the Game
+      de: Die Stadt am Ende des Spiels
+    elytra:
+      points: 25
+      en: Skys the Limit
+      de: Hinterm Horizont gehts weiter
+    levitate:
+      points: 25
+      en: Great View From Up Here
+      de: Schöne Aussicht von hier oben
+
+  adventure:
+    root:
+      points: 1
+      en: Adventure
+      de: Abenteuer
+    voluntary_exile:
+      points: 2
+      en: Voluntary Exile
+      de: Freiwilliges Exil
+    spyglass_at_parrot:
+      points: 2
+      en: Is It a Bird?
+      de: Ist es ein Vogel?
+    kill_a_mob:
+      points: 1
+      en: Monster Hunter
+      de: Monsterjäger
+    read_power_from_chiseled_bookshelf:
+      points: 2
+      en: The Power of Books
+      de: Spannung in jedem Band
+    trade:
+      points: 1
+      en: What a Deal!
+      de: Was für ein Geschäft!
+    trim_with_any_armor_pattern:
+      points: 2
+      en: Crafting a New Look
+      de: Ein neues Aussehen
+    honey_block_slide:
+      points: 2
+      en: Sticky Situation
+      de: Eine klebrige Angelegenheit
+    ol_betsy:
+      points: 2
+      en: Ol Betsy
+      de: Ich habe die Knarre gesichert
+    lightning_rod_with_villager_no_fire:
+      points: 5
+      en: Surge Protector
+      de: Überspannungsschutz
+    fall_from_world_height:
+      points: 25
+      en: Caves & Cliffs
+      de: Höhlen & Klippen
+    salvage_sherd:
+      points: 2
+      en: Respecting the Remnants
+      de: Achtung vor dem Alten
+    avoid_vibration:
+      points: 5
+      en: Sneak 100
+      de: Schleichen 100
+    sleep_in_bed:
+      points: 1
+      en: Sweet Dreams
+      de: Träum was Schönes
+    hero_of_the_village:
+      points: 25
+      en: Hero of the Village
+      de: Dorfheld
+    spyglass_at_ghast:
+      points: 5
+      en: Is It a Balloon?
+      de: Ist es ein Ballon?
+    throw_trident:
+      points: 5
+      en: A Throwaway Joke
+      de: Ein Witz zum Wegwerfen
+    kill_mob_near_sculk_catalyst:
+      points: 20
+      en: It Spreads
+      de: Es verbreitet sich
+    shoot_arrow:
+      points: 2
+      en: Take Aim
+      de: Zielübungen
+    kill_all_mobs:
+      points: 75
+      en: Monsters Hunted
+      de: Meisterjäger
+    totem_of_undying:
+      points: 10
+      en: Postmortal
+      de: Post mortem
+    summon_iron_golem:
+      points: 5
+      en: Hired Help
+      de: Das 1. Gesetz der Robotik
+    trade_at_world_height:
+      points: 10
+      en: Star Trader
+      de: Sternenhändler
+    trim_with_all_exclusive_armor_patterns:
+      points: 25
+      en: Smithing with Style
+      de: Schmieden mit Stil
+    two_birds_one_arrow:
+      points: 20
+      en: Two Birds, One Arrow
+      de: Zwei auf einen Streich
+    whos_the_pillager_now:
+      points: 5
+      en: Whos the Pillager Now?
+      de: Wer ist jetzt der Plünderer?
+    arbalistic:
+      points: 50
+      en: Arbalistic
+      de: Armbrustschütze
+    craft_decorated_pot_using_only_sherds:
+      points: 5
+      en: Careful Restoration
+      de: Behutsame Restaurierung
+    adventuring_time:
+      points: 0
+      en: Adventuring Time
+      de: Abenteuerzeit
+    play_jukebox_in_meadows:
+      points: 10
+      en: Sound of Music
+      de: Deine Welt sind die Berge
+    walk_on_powder_snow_with_leather_boots:
+      points: 5
+      en: Light as a Rabbit
+      de: Leicht wie ein Kaninchen
+    spyglass_at_dragon:
+      points: 5
+      en: Is It a Plane?
+      de: Ist es ein Flugzeug?
+    very_very_frightening:
+      points: 10
+      en: Very Very Frightening
+      de: Angst und Schrecken
+    sniper_duel:
+      points: 15
+      en: Sniper Duel
+      de: Scharfschützenduell
+    bullseye:
+      points: 20
+      en: Bullseye
+      de: Volltreffer!
+    brush_armadillo:
+      points: 10
+      en: Isnt It Scute?
+      de: Ist das nicht putzig?
+    minecraft_trials_edition:
+      points: 10
+      en: "Minecraft: Trial(s) Edition"
+      de: "Minecraft: Prüfungs‐Edition"
+    crafters_crafting_crafters:
+      points: 10
+      en: Crafters Crafting Crafters
+      de: Werker werkeln Werker
+    lighten_up:
+      points: 10
+      en: Lighten Up
+      de: Aufhellen
+    who_needs_rockets:
+      points: 10
+      en: Who Needs Rockets?
+      de: Wer braucht schon Raketen?
+    under_lock_and_key:
+      points: 10
+      en: Under Lock and Key
+      de: Hinter Schloss und Riegel
+    revaulting:
+      points: 20
+      en: Revaulting
+      de: Panzerknacker
+    blowback:
+      points: 20
+      en: Blowback
+      de: Gegenwind
+    overoverkill:
+      points: 20
+      en: Over-Overkill
+      de: Großmeister des Kampfes
+
+
+  husbandry:
+    root:
+      points: 1
+      en: Husbandry
+      de: Landwirtschaft
+    safely_harvest_honey:
+      points: 2
+      en: Bee Our Guest
+      de: Sssei unser Gast
+    breed_an_animal:
+      points: 1
+      en: The Parrots and the Bats
+      de: Die Hühnchen und die Blümchen
+    allay_deliver_item_to_player:
+      points: 5
+      en: You've Got a Friend in Me
+      de: Du hast ’n Freund in mir
+    ride_a_boat_with_a_goat:
+      points: 5
+      en: Whatever Floats Your Goat!
+      de: Ohne Geiß kein Preis!
+    tame_an_animal:
+      points: 1
+      en: Best Friends Forever
+      de: Allerbeste Freunde
+    make_a_sign_glow:
+      points: 2
+      en: Glow and Behold!
+      de: Leuchte und staune!
+    fishy_business:
+      points: 1
+      en: Fishy Business
+      de: Anglerglück
+    silk_touch_nest:
+      points: 5
+      en: Total Beelocation
+      de: Bienenwanderung
+    tadpole_in_a_bucket:
+      points: 10
+      en: Bukkit Bukkit
+      de: Im Eimer
+    obtain_sniffer_egg:
+      points: 10
+      en: Smells Interesting
+      de: Ein ungewöhnlicher Geruch
+    plant_seed:
+      points: 1
+      en: A Seedy Place
+      de: Hobbygärtner
+    wax_on:
+      points: 10
+      en: Wax On
+      de: Auftragen
+    breed_all_animals:
+      points: 75
+      en: Two by Two
+      de: Paarweise
+    allay_deliver_cake_to_noteblock:
+      points: 10
+      en: Birthday Song
+      de: Geburtstagslied
+    complete_catalogue:
+      points: 50
+      en: A Complete Catalogue
+      de: Ein kompletter Katerlog
+    tactical_fishing:
+      points: 1
+      en: Tactical Fishing
+      de: Taktisches Fischen
+    leash_all_frog_variants:
+      points: 10
+      en: When the Squad Hops into Town
+      de: Wenn die Kerle um die Häuser ziehen
+    feed_snifflet:
+      points: 10
+      en: Little Sniffs
+      de: Schnupperkurs
+    balanced_diet:
+      points: 75
+      en: A Balanced Diet
+      de: Ausgewogene Ernährung
+    obtain_netherite_hoe:
+      points: 15
+      en: Serious Dedication
+      de: Landwirt aus Leidenschaft
+    wax_off:
+      points: 5
+      en: Wax Off
+      de: Polieren
+    axolotl_in_a_bucket:
+      points: 10
+      en: The Cutest Predator
+      de: Das niedlichste Raubtier
+    froglights:
+      points: 25
+      en: With Our Powers Combined!
+      de: Mit vereinten Kräften!
+    plant_any_sniffer_seed:
+      points: 10
+      en: Planting the Past
+      de: Wir säen Geschichte
+    kill_axolotl_target:
+      points: 10
+      en: The Healing Power of Friendship!
+      de: Die heilende Kraft der Freundschaft!
+    repair_wolf_armor:
+      points: 10
+      en: Good as New
+      de: Schnipp‐schnapp!
+    whole_pack:
+      points: 50
+      en: The Whole Pack
+      de: Das ganze Rudel
+    remove_wolf_armor:
+      points: 10
+      en: Shear Brilliance
+      de: So gut wie neu
