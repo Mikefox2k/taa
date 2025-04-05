@@ -281,7 +281,7 @@ minecraft:
     kill_all_mobs:
       points: 75
       en: Monsters Hunted
-      de: 	Meisterjäger
+      de: Meisterjäger
     totem_of_undying:
       points: 10
       en: Postmortal

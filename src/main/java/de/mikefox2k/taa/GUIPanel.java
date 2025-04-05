@@ -39,32 +39,44 @@ public class GUIPanel implements Listener {
         int maxAchievementAmount = plugin.getGameManager().getMaxAchievementAmount();
         long timePlayed = this.plugin.getGameManager().getTimePlayed(board.getPlayer().getUniqueId());
         long timeSinceLastAchievement = this.plugin.getGameManager().getTimeSinceLastAchievement(board.getPlayer().getUniqueId());
+        String lastAchievement = this.plugin.getGameManager().getLastAchievement();
         String currentGoal = this.plugin.getGameManager().getCurrentGoal().getOrDefault(board.getPlayer().getUniqueId(), "-");
+        int deathCount = this.plugin.getGameManager().getDeathCount();
+        int currentPoints = this.plugin.getGameManager().getCurrentPoints();
+        int maxPoints = this.plugin.getGameManager().getMaxPoints();
 
         board.updateLines(
                 Component.text("»Achievement Hunt«")
                         .style(Style.style(TAAColors.RED, TextDecoration.BOLD, TextDecoration.UNDERLINED)),
                 Component.text(""),
                 Component.text("Gesamtzeit", TAAColors.YELLOW),
-                Component.text().content(" » ").color(TAAColors.ORANGE)
-                        .append(Component.text(Util.formatTime(timePlayed), TAAColors.ORANGE))
-                        .build(),
-                Component.text(""),
+                Component.text(" » ").color(TAAColors.ORANGE)
+                        .append(Component.text(Util.formatTime(timePlayed), TAAColors.ORANGE)),
+//                Component.text(""),
                 Component.text("Achievements", TAAColors.YELLOW),
-                Component.text().content(" » ").color(TAAColors.ORANGE)
+                Component.text(" » ").color(TAAColors.ORANGE)
                         .append(Component.text(currentAchievementAmount, TAAColors.ORANGE))
                         .append(Component.text(" / ", TAAColors.ORANGE))
-                        .append(Component.text(maxAchievementAmount, TAAColors.ORANGE))
-                        .build(),
-                Component.text(""),
+                        .append(Component.text(maxAchievementAmount, TAAColors.ORANGE)),
+//                Component.text(""),
                 Component.text("Letztes Achievement", TAAColors.YELLOW),
-                Component.text().content(" » ").color(TAAColors.ORANGE)
-                        .append(Component.text(Util.formatTime(timeSinceLastAchievement), TAAColors.ORANGE))
-                        .build(),
-                Component.text(""),
+                Component.text(" » ").color(TAAColors.ORANGE)
+                        .append(Component.text(Util.formatTime(timeSinceLastAchievement), TAAColors.ORANGE)),
+                Component.text(" » ").color(TAAColors.ORANGE)
+                        .append(Component.text(lastAchievement, TAAColors.GREEN)),
+//                Component.text(""),
                 Component.text("Ziel", TAAColors.YELLOW),
+                Component.text(" » ").color(TAAColors.ORANGE)
+                        .append(Component.text(currentGoal, TAAColors.GREEN)),
+//                Component.text(""),
+                Component.text("Tode", TAAColors.YELLOW),
+                Component.text(" » ").color(TAAColors.ORANGE)
+                        .append(Component.text(deathCount, TAAColors.RED)),
+                Component.text("Punkte", TAAColors.YELLOW),
                 Component.text().content(" » ").color(TAAColors.ORANGE)
-                        .append(Component.text(currentGoal, TAAColors.GREEN))
+                        .append(Component.text(currentPoints, TAAColors.ORANGE))
+                        .append(Component.text(" / ", TAAColors.ORANGE))
+                        .append(Component.text(maxPoints, TAAColors.ORANGE))
                         .build()
         );
     }
@@ -85,7 +97,7 @@ public class GUIPanel implements Listener {
         if (plugin.getGameManager().getRegisteredUUIDs().contains(player.getUniqueId())) {
             createBoard(player);
             FileManager fileManager = new FileManager(plugin);
-            fileManager.loadGameState(player.getUniqueId());
+            fileManager.loadGameState();
 
             plugin.getGameManager().startTimerPlayed();
             plugin.getGameManager().startTimerSinceLastAchievement();
@@ -97,7 +109,7 @@ public class GUIPanel implements Listener {
         Player player = event.getPlayer();
 
         FileManager fileManager = new FileManager(plugin);
-        fileManager.saveGameState(player.getUniqueId());
+        fileManager.saveGameState();
 
         plugin.getGameManager().stopTimerPlayed();
         plugin.getGameManager().stopTimerSinceLastAchievement();

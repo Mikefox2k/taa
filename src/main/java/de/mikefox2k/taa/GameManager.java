@@ -5,9 +5,11 @@ import net.kyori.adventure.title.Title;
 import org.bukkit.*;
 import org.bukkit.advancement.Advancement;
 import org.bukkit.advancement.AdvancementProgress;
+import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerAdvancementDoneEvent;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
@@ -27,12 +29,18 @@ public class GameManager implements Listener {
 
     private Map<UUID, String> currentGoal = new HashMap<>();
 
+    private int deathCount;
+
+    private int currentPoints;
+    private String lastAchievement;
+
     private boolean isGameRunning;
 
     public GameManager(TAAPlugin plugin) {
         this.plugin = plugin;
         this.players = new HashMap<>();
         this.isGameRunning = false;
+        this.lastAchievement = " - ";
 
         Bukkit.getPluginManager().registerEvents(this, plugin);
     }
@@ -60,6 +68,7 @@ public class GameManager implements Listener {
 
         Bukkit.broadcast(Component.text("Die Trilluxe Achievement Hunt startet bald!"));
         this.isGameRunning = true;
+        this.deathCount = 0;
 
         World overworld = plugin.getServer().getWorlds().getFirst();
 
@@ -127,6 +136,14 @@ public class GameManager implements Listener {
         }
     }
 
+    public int getDeathCount() {
+        return this.deathCount;
+    }
+
+    public void setDeathCount(int count) {
+        this.deathCount = count;
+    }
+
     @EventHandler
     public void onPlayerAdvancement(PlayerAdvancementDoneEvent event) {
         handleAdvancement(event.getPlayer(), event.getAdvancement());
@@ -145,8 +162,31 @@ public class GameManager implements Listener {
             return;
         }
 
+
         playerData.getEarnedAchievements().add(achievementKey);
+
+        ConfigurationSection advancementSection = getAdvancementSection(advancement);
+
+        setCurrentPoints(calcCurrentPoints(advancementSection));
+        setLastAchievement(getAdvancementName(advancementSection));
+
         resetTimeSinceLastAchievement();
+        plugin.getGUIPanel().updateBoards();
+    }
+
+    @EventHandler
+    public void onPlayerDeath(PlayerDeathEvent event) {
+        Player player = event.getEntity();
+        PlayerData playerData = players.get(player.getUniqueId());
+
+        // Ignore if player is not registered or game is not running
+        if(playerData == null || !isGameRunning) {
+            return;
+        }
+
+        this.deathCount += 1;
+        setDeathCount(this.deathCount);
+
         plugin.getGUIPanel().updateBoards();
     }
 
@@ -173,6 +213,24 @@ public class GameManager implements Listener {
     private boolean isRecipe(Advancement advancement) {
         String key = advancement.getKey().getKey();
         return key.split("/")[0].equals("recipes");
+    }
+
+    private ConfigurationSection getAdvancementSection(Advancement advancement) {
+        String path = advancement.getKey().getNamespace() + "." + advancement.getKey().getKey().replace('/', '.');
+        return plugin.getAdvancementsConfig().getConfigurationSection(path);
+    }
+
+    private ConfigurationSection getAdvancementSection(NamespacedKey key) {
+        String path = key.getNamespace() + "." + key.getKey().replace('/', '.');
+        return plugin.getAdvancementsConfig().getConfigurationSection(path);
+    }
+
+    public int getAdvancementPoints(ConfigurationSection advancementSection) {
+        return advancementSection.getInt("points", 0);
+    }
+
+    public String getAdvancementName(ConfigurationSection advancementSection) {
+        return advancementSection.getString("de");
     }
 
     public void startTimerPlayed() {
@@ -266,6 +324,45 @@ public class GameManager implements Listener {
 
     public void setPlayers(Map<UUID, PlayerData> players) {
         this.players = players;
+    }
+
+    public void setCurrentPoints(int points) {
+        this.currentPoints = points;
+    }
+
+    public int getCurrentPoints() {
+        return this.currentPoints;
+    }
+
+    public void setLastAchievement(String name) {
+        this.lastAchievement = name;
+    }
+
+    public String getLastAchievement() {
+        return this.lastAchievement;
+    }
+
+    public int calcCurrentPoints(ConfigurationSection advancementSection) {
+        int res = 0;
+        for (PlayerData playerData : players.values()) {
+            for (NamespacedKey key : playerData.getEarnedAchievements()) {
+                res += getAdvancementPoints(getAdvancementSection(key));
+            }
+        }
+
+        Bukkit.broadcast(Component.text(res));
+        return res;
+    }
+
+    public int getMaxPoints() {
+        int res = 0;
+        List<String> configKey = plugin.getAdvancementsConfig().getKeys(true).stream().filter(s -> s.endsWith(".points")).toList();
+
+        for (String key : configKey) {
+            res += plugin.getAdvancementsConfig().getInt(key);
+        }
+
+        return res * players.size();
     }
 
     public int getCurrentAchievementAmount() {
